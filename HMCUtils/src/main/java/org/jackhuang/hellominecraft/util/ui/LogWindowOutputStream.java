@@ -35,8 +35,10 @@ public class LogWindowOutputStream extends OutputStream {
     private final Level sas;
 
     public LogWindowOutputStream(LogWindow logWindow, Level l) {
-        Objects.nonNull(logWindow);
-        Objects.nonNull(l);
+        if(logWindow == null || l == null) {
+            throw new NullPointerException();
+        }
+
         txt = logWindow;
         sas = l;
     }
